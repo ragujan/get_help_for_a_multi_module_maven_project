@@ -1,0 +1,4 @@
+ejb\remote\Cart.class
+ejb\impl\CartBean.class
+ejb\remote\Tax.class
+ejb\impl\TaxCalculateBean.class
