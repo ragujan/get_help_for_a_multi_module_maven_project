@@ -1,4 +1,4 @@
-package com.rag.web.servlet;
+package com.jiat.web.servlet;
 
 import ejb.remote.Cart;
 import ejb.remote.Tax;

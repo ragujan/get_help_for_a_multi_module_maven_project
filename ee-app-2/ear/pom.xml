@@ -57,7 +57,7 @@
                         <webModule>
                             <groupId>com.rag</groupId>
                             <artifactId>web</artifactId>
-                            <contextRoot>/shopping</contextRoot>
+                            <contextRoot>/ragbagtest</contextRoot>
                         </webModule>
                     </modules>
                 </configuration>

@@ -1,4 +1,4 @@
-package com.rag.web.servlet;
+package com.jiat.web.servlet;
 
 import ejb.remote.Cart;
 import jakarta.servlet.ServletException;
@@ -11,7 +11,6 @@ import jakarta.servlet.http.HttpSession;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.IOException;
-import java.util.Map;
 
 @WebServlet(name = "AddToCart", value = "/add-cart")
 public class AddToCart extends HttpServlet {

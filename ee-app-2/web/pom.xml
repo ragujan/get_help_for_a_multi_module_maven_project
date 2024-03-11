@@ -33,6 +33,12 @@
             <type>ejb-client</type>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.rag</groupId>
+            <artifactId>core</artifactId>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>

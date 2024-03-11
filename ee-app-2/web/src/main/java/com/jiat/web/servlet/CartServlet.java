@@ -1,7 +1,6 @@
-package com.rag.web.servlet;
+package com.jiat.web.servlet;
 
 import ejb.remote.Cart;
-import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

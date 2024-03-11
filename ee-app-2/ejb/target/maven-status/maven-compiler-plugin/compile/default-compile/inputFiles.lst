@@ -1,5 +1,6 @@
-F:\web_multi_projects\remote_client_app\ee-app-2\ejb\src\main\java\ejb\remote\Tax.java
-F:\web_multi_projects\remote_client_app\ee-app-2\ejb\src\main\java\ejb\impl\TaxCalculateBean.java
-F:\web_multi_projects\remote_client_app\ee-app-2\ejb\src\main\java\ejb\impl\CartBean.java
-F:\web_multi_projects\remote_client_app\ee-app-2\ejb\src\main\java\ejb\remote\Cart.java
-F:\web_multi_projects\remote_client_app\ee-app-2\ejb\src\main\java\ejb\message\MessageReceiver.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\message\MessageReceiver.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\impl\AccountBean.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\remote\Cart.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\impl\TaxCalculateBean.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\impl\CartBean.java
+F:\web_multi_projects\multi_moduel_app_help_github\ee-app-2\ejb\src\main\java\ejb\remote\Tax.java

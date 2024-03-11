@@ -1,4 +1,5 @@
 ejb\remote\Cart.class
+ejb\impl\AccountBean.class
 ejb\impl\CartBean.class
 ejb\message\MessageReceiver.class
 ejb\remote\Tax.class

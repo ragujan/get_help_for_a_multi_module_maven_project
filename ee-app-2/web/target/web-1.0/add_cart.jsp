@@ -11,6 +11,7 @@
     <title>Title</title>
 </head>
 <body>
+   <h1>Hey</h1>
     <form action="add-cart" method="post">
         <input type="text" name="name">
         <input type="submit" value="Add To Cart">
