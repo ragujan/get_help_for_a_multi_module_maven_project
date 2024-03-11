@@ -6,11 +6,11 @@ import jakarta.jms.JMSException;
 import jakarta.jms.Message;
 import jakarta.jms.MessageListener;
 
-//@MessageDriven(
-//        activationConfig = {
-//                @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "myQueue")
-//        }
-//)
+@MessageDriven(
+        activationConfig = {
+                @ActivationConfigProperty(propertyName = "destinationLookup", propertyValue = "myQueue")
+        }
+)
 public class MessageReceiver implements MessageListener {
     @Override
     public void onMessage(Message message) {

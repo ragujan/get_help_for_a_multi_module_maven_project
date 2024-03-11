@@ -1,4 +1,4 @@
-package com.jiat.web.servlet;
+package com.module.web.servlet;
 
 
 import core.Account;
