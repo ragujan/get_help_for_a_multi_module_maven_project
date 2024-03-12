@@ -1,4 +1,4 @@
-package com.rag.jms_client;
+package com.ragiot.jms_client;
 
 import jakarta.jms.*;
 

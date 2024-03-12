@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.rag</groupId>
+    <groupId>com.ragiot</groupId>
     <artifactId>iot-device</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -19,6 +19,18 @@
             <groupId>fish.payara.extras</groupId>
             <artifactId>payara-embedded-all</artifactId>
             <version>6.2024.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rag</groupId>
+            <artifactId>ejb</artifactId>
+            <version>1.0</version>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
+            <groupId>com.rag</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+
         </dependency>
     </dependencies>
 </project>

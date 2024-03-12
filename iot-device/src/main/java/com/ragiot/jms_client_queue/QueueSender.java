@@ -1,9 +1,10 @@
-package com.rag.jms_client_queue;
+package com.ragiot.jms_client_queue;
 
 import jakarta.jms.*;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+
 
 public class QueueSender {
     public static void main(String[] args) throws NamingException, JMSException {
@@ -25,15 +26,24 @@ public class QueueSender {
         jakarta.jms.QueueSender sender = queueSession.createSender(queue);
 
         TextMessage message = queueSession.createTextMessage();
-        for (int i = 0; i < 10; i++) {
-            message.setText("Bro this is a queue message " + i);
-            sender.send(message);
-//            client acknowledging that the message is received. 
-            message.acknowledge();
-        }
-        queueConnection.close();
+//        for (int i = 0; i < 10; i++) {
+//            message.setText("Bro this is a queue message " + i);
+//            sender.send(message);
+////            client acknowledging that the message is received.
+//            message.acknowledge();
+//        }
         System.out.println("hey");
 //        topicConnection.close();
+
+//       use IoT ejb bean
+
+//        context.lookup("java:global/ear/app/")
+
+
+
+
+
+        queueConnection.close();
 
     }
 }
