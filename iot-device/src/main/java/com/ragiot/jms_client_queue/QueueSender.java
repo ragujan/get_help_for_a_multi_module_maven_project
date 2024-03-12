@@ -1,6 +1,5 @@
 package com.ragiot.jms_client_queue;
 
-import ejb.remote.IoTDeviceReading;
 import jakarta.jms.*;
 
 import javax.naming.InitialContext;
@@ -39,10 +38,7 @@ public class QueueSender {
 //       use IoT ejb bean
 
 //        context.lookup("java:global/ear/app/")
-        IoTDeviceReading reading =(IoTDeviceReading) context.lookup("java:/global/ear/app/IotDeviceReading");
 
-        reading.captureVehicleSpeed(100);
-        reading.captureTrafficLightStatus("yellow");
 
 
 

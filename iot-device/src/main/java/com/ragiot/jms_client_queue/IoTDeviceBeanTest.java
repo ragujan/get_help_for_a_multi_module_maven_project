@@ -2,9 +2,6 @@ package com.ragiot.jms_client_queue;
 
 import com.ragiot.utils.IoTDataGenerator;
 import core.IoTDeviceReadingState;
-import ejb.remote.IoTDeviceReading;
-//import ejb.remote.IoTDeviceReadingStore;
-//import ejb.remote.IoTDeviceReadingStore;
 import ejb.remote.IoTDeviceReadingStore;
 import ejb.remote.Tax;
 import jakarta.jms.*;
@@ -43,8 +40,8 @@ public class IoTDeviceBeanTest {
 //       use IoT ejb bean
 
 //        context.lookup("java:global/ear/app/")
-        Tax tax = (Tax) context.lookup("java:global/ear/app/TaxCalculateBean");
-        tax.setValue(500);
+//        Tax tax = (Tax) context.lookup("java:global/ear/app/TaxCalculateBean");
+//        tax.setValue(500);
 
         IoTDeviceReadingState state = new IoTDeviceReadingState();
         String lightStatus = IoTDataGenerator.randomStatus();
@@ -53,11 +50,10 @@ public class IoTDeviceBeanTest {
         state.captureVehicleSpeed(speed);
 
         IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
-
+        readingStoreBean.setName("hey");
         readingStoreBean.setReading(state);
-
         ObjectMessage message = queueSession.createObjectMessage();
-        message.setObject((Serializable) readingStoreBean);
+        message.setObject(readingStoreBean);
         sender.send(message);
 
 

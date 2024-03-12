@@ -5,7 +5,6 @@
 package com.ragiot.view;
 
 import com.ragiot.utils.IoTDataGenerator;
-import ejb.remote.IoTDeviceReading;
 import ejb.remote.IoTDeviceReadingStore;
 
 import javax.naming.InitialContext;
@@ -71,11 +70,8 @@ public class IoTDevice extends javax.swing.JFrame {
 			InitialContext context = null;
 			try {
 				context = new InitialContext();
-				IoTDeviceReading reading = (IoTDeviceReading)context.lookup("java:global/ear/app/IoTDeviceReadingBean");
-				String lightStatus = IoTDataGenerator.randomStatus();
-				int speed = IoTDataGenerator.randomSpeed();
-				reading.captureTrafficLightStatus(lightStatus);
-				reading.captureVehicleSpeed(speed);
+
+
 
 				IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
 			} catch (NamingException e) {
