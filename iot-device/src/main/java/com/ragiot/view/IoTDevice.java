@@ -19,6 +19,8 @@ import javax.swing.JFrame;
  */
 public class IoTDevice extends javax.swing.JFrame {
 
+    String id;
+
     /**
      * Creates new form IoTDevice
      */
@@ -29,11 +31,25 @@ public class IoTDevice extends javax.swing.JFrame {
 
     public IoTDevice(int id) {
         this();
-        String idStr = Integer.toString(id);
+        setId(id);
     }
 
     public IoTDevice(String id) {
         this();
+        setId(id);
+    }
+
+    private void setId(Object id) {
+        if (id instanceof String) {
+            this.id = (String) id;
+        }
+        if (id instanceof Integer) {
+            this.id = Integer.toString((Integer) id);
+        }
+        setLableId();
+    }
+    private void setLableId(){
+        jLabel2.setText(this.id);
     }
 
     /**
@@ -46,21 +62,19 @@ public class IoTDevice extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Send Data");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    jButton1ActionPerformed(evt);
-                } catch (NamingException e) {
-                    throw new RuntimeException(e);
-                } catch (JMSException e) {
-                    throw new RuntimeException(e);
-                }
+                jButton1ActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Device Id");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,64 +82,67 @@ public class IoTDevice extends javax.swing.JFrame {
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(49, 49, 49)
                                 .addComponent(jButton1)
-                                .addContainerGap(26, Short.MAX_VALUE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) throws NamingException, JMSException {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InitialContext context = new InitialContext();
-        QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) context.lookup("myQueueConnectionFactory");
-        QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
-        queueConnection.start();
-        QueueSession queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-        Queue queue = (Queue) context.lookup("myQueue");
-        jakarta.jms.QueueSender sender = queueSession.createSender(queue);
 
-        IoTDeviceReadingState state = new IoTDeviceReadingState();
-        String lightStatus = IoTDataGenerator.randomStatus();
-        int speed = IoTDataGenerator.randomSpeed();
-        state.captureTrafficLightStatus(lightStatus);
-        state.captureVehicleSpeed(speed);
+        try {
+            InitialContext context = new InitialContext();
+            QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) context.lookup("myQueueConnectionFactory");
+            QueueConnection queueConnection = queueConnectionFactory.createQueueConnection();
+            QueueSession queueSession = null;
+            queueConnection.start();
+            queueSession = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+            Queue queue = (Queue) context.lookup("transmitIoTReadings");
+            QueueSender sender = queueSession.createSender(queue);
+
+            IoTDeviceReadingState state = new IoTDeviceReadingState();
+            String lightStatus = IoTDataGenerator.randomStatus();
+            int speed = IoTDataGenerator.randomSpeed();
+            state.captureTrafficLightStatus(lightStatus);
+            state.captureVehicleSpeed(speed);
 
 
-        IoTDeviceReadingState state2 = new IoTDeviceReadingState();
-        String lightStatus2 = IoTDataGenerator.randomStatus();
-        int speed2 = IoTDataGenerator.randomSpeed();
-        state2.captureTrafficLightStatus(lightStatus2);
-        state2.captureVehicleSpeed(speed2);
+            IoTDeviceReadingStoreBeanDTO dto = new IoTDeviceReadingStoreBeanDTO();
+            dto.setReading(state);
+            dto.setId(this.id);
 
-        IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
+            ObjectMessage message = queueSession.createObjectMessage();
 
-        if (readingStoreBean.getName() == null) {
-            System.out.println("name is null");
-            readingStoreBean.setName(IoTDataGenerator.randomNumberToString());
-        } else {
-            System.out.println("name is not null ");
+            message.setObject(dto);
+            sender.send(message);
+
+            queueConnection.close();
+            System.out.println("hey");
+
+        } catch (NamingException e) {
+            throw new RuntimeException(e);
+        } catch (JMSException e) {
+
         }
-
-
-        readingStoreBean.setName("hey");
-        readingStoreBean.setReading(state);
-        readingStoreBean.setReading(state2);
-
-        System.out.println(readingStoreBean.getName());
-        IoTDeviceReadingStoreBeanDTO dto = null;
-        dto = readingStoreBean.getDTO();
-
-        ObjectMessage message = queueSession.createObjectMessage();
-        message.setObject(dto);
-        sender.send(message);
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -167,5 +184,7 @@ public class IoTDevice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

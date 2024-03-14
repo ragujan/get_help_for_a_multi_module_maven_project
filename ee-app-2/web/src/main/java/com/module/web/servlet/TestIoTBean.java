@@ -34,7 +34,7 @@ public class TestIoTBean extends HttpServlet {
             IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
             readingStoreBean.setReading(state);
 
-            response.getWriter().write(readingStoreBean.getReadings().get(0).getCapturedTrafficLightStatus());
+            response.getWriter().write(readingStoreBean.getReadings().getCapturedTrafficLightStatus());
 
 
             QueueConnectionFactory queueConnectionFactory = (QueueConnectionFactory) context.lookup("myQueueConnectionFactory");

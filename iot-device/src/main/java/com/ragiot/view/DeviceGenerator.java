@@ -39,8 +39,10 @@ public class DeviceGenerator extends javax.swing.JFrame {
         model.setRowCount(0);
         rowBuilder().forEach(e->{
             model.addRow(e);
+            Object[] ob = e;
+            String idStr = (String) ob[0];
             jTable1.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
-            jTable1.getColumnModel().getColumn(1).setCellEditor(new ButtonEditor());
+            jTable1.getColumnModel().getColumn(1).setCellEditor(new ButtonEditor(idStr));
         });
 
 
@@ -77,6 +79,11 @@ public class DeviceGenerator extends javax.swing.JFrame {
         private JButton button;
         private String label;
         private boolean isPushed;
+        private String btnId;
+        public ButtonEditor(String idStr){
+            this();
+            this.btnId = idStr;
+        }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
@@ -100,7 +107,7 @@ public class DeviceGenerator extends javax.swing.JFrame {
             button.setOpaque(true);
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    new IoTDevice().setVisible(true);
+                    new IoTDevice(btnId).setVisible(true);
                     // Action to perform when button clicked
 //                    JOptionPane.showMessageDialog(null, "Button clicked!");
                 }
@@ -113,7 +120,7 @@ public class DeviceGenerator extends javax.swing.JFrame {
 
         for (int i = 0; i < totalDevices; i++) {
 //           list.add(new Object[]{deviceList.get(i),"open"});
-            list.add(new Object[]{i,"open"});
+            list.add(new Object[]{Integer.toString(i),"open"});
         }
         return list;
 

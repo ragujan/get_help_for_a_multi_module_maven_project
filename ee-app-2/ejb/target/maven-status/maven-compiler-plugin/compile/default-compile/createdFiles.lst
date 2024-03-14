@@ -1,0 +1,15 @@
+ejb\message\ReceiveIoTDeviceReadings.class
+ejb\message\IoTDeviceIdMessageCommunicator.class
+ejb\impl\CartBean.class
+ejb\message\IoTDeviceIdMessageCommunicator2.class
+ejb\impl\TaxCalculateBean.class
+ejb\impl\IoTDeviceManagerBean.class
+ejb\remote\Cart.class
+ejb\impl\AccountBean.class
+ejb\impl\IoTDeviceCountBean.class
+ejb\message\MessageReceiver.class
+ejb\remote\IoTDeviceReadingStore.class
+ejb\impl\IoTDeviceReadingStoreBean.class
+ejb\remote\Tax.class
+ejb\remote\IoTDeviceCount.class
+ejb\remote\IoTDeviceManager.class

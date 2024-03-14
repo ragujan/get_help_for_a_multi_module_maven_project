@@ -12,12 +12,12 @@ import java.util.List;
 
 @Stateful
 public class IoTDeviceReadingStoreBean implements IoTDeviceReadingStore , Serializable {
-    private List<IoTDeviceReadingState> readings ;
+    private IoTDeviceReadingState readings ;
     private String name;
 
     @PostConstruct
     public void configureBean(){
-        this.readings = new LinkedList<>();
+
     }
 
     @Override
@@ -39,9 +39,9 @@ public class IoTDeviceReadingStoreBean implements IoTDeviceReadingStore , Serial
     }
 
     public void setReading(IoTDeviceReadingState reading){
-        this.readings.add(reading);
+        this.readings=reading;
     }
-    public List<IoTDeviceReadingState> getReadings(){
+    public IoTDeviceReadingState getReadings(){
         return readings;
     }
 

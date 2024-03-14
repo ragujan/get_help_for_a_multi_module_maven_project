@@ -2,13 +2,19 @@ package core;
 
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 
 public class IoTDeviceReadingStoreBeanDTO implements   Serializable {
-    private List<IoTDeviceReadingState> readings ;
+    private IoTDeviceReadingState readings ;
     private String name;
+    private String id;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setName(String name) {
         this.name=name;
@@ -18,10 +24,10 @@ public class IoTDeviceReadingStoreBeanDTO implements   Serializable {
         return this.name;
     }
 
-    public void setReading(List<IoTDeviceReadingState> readings){
+    public void setReading(IoTDeviceReadingState readings){
         this.readings = readings;
     }
-    public List<IoTDeviceReadingState> getReadings(){
+    public IoTDeviceReadingState getReadings(){
         return readings;
     }
 

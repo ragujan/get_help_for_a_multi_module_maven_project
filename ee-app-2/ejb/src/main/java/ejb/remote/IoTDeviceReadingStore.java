@@ -19,6 +19,6 @@ public interface IoTDeviceReadingStore extends Serializable {
 
     void setReading(IoTDeviceReadingState reading);
 
-    List<IoTDeviceReadingState> getReadings();
+    IoTDeviceReadingState getReadings();
 }
 

@@ -1,0 +1,10 @@
+com\module\web\servlet\MessageServletReceiver$1.class
+com\module\web\servlet\MessageServlet.class
+com\module\web\servlet\CartServlet.class
+com\module\web\filters\TestFilter.class
+com\module\web\servlet\MessageServletReceiver.class
+com\module\web\servlet\Test.class
+com\module\web\servlet\TestIoTBean.class
+com\module\web\servlet\TestServlet.class
+com\module\web\servlet\AddToCart.class
+com\module\web\servlet\CalculateTax.class
