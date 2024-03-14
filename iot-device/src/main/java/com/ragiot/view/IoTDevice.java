@@ -27,6 +27,15 @@ public class IoTDevice extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    public IoTDevice(int id) {
+        this();
+        String idStr = Integer.toString(id);
+    }
+
+    public IoTDevice(String id) {
+        this();
+    }
+
     /**
      * This method is called from within the constructor to initialize the
      * form. WARNING: Do NOT modify this code. The content of this method is
@@ -98,13 +107,12 @@ public class IoTDevice extends javax.swing.JFrame {
 
         IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
 
-        if(readingStoreBean.getName() == null){
+        if (readingStoreBean.getName() == null) {
             System.out.println("name is null");
             readingStoreBean.setName(IoTDataGenerator.randomNumberToString());
-        }else{
+        } else {
             System.out.println("name is not null ");
         }
-
 
 
         readingStoreBean.setName("hey");

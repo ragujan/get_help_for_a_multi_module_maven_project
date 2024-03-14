@@ -20,5 +20,19 @@
             <artifactId>payara-embedded-all</artifactId>
             <version>6.2024.2</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.rag</groupId>
+            <artifactId>ejb</artifactId>
+            <version>1.0</version>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
+            <groupId>com.rag</groupId>
+            <artifactId>core</artifactId>
+            <version>1.0</version>
+
+        </dependency>
     </dependencies>
 </project>
