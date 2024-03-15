@@ -14,6 +14,9 @@ import jakarta.jms.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.swing.JFrame;
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author ACER
@@ -127,6 +130,10 @@ public class IoTDevice extends javax.swing.JFrame {
             state.captureTrafficLightStatus(lightStatus);
             state.captureVehicleSpeed(speed);
             state.captureGPSCoordinates(coordinate);
+            Date currentDate = new Date();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = dateFormat.format(currentDate);
+            state.captureTime(formattedDate);
 
 
             IoTDeviceReadingStoreBeanDTO dto = new IoTDeviceReadingStoreBeanDTO();

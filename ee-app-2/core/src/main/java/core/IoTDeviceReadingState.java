@@ -8,6 +8,16 @@ public class IoTDeviceReadingState implements Serializable {
     String capturedTrafficLightStatus = null;
     Coordinate capturedGPSCoordinates = null;
 
+    String capturedTime = null;
+
+    public String getCapturedTime() {
+        return capturedTime;
+    }
+
+    public void captureTime(String capturedTime) {
+        this.capturedTime = capturedTime;
+    }
+
     public IoTDeviceReadingState() {
     }
 

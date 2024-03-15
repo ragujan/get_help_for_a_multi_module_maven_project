@@ -35,14 +35,8 @@ public class IoTDeviceBeanTest {
         state2.captureVehicleSpeed(speed2);
 
 
-        IoTDeviceReadingStore readingStoreBean = (IoTDeviceReadingStore) context.lookup("java:global/ear/app/IoTDeviceReadingStoreBean");
 
-        readingStoreBean.setName("hey");
-        readingStoreBean.setReading(state);
-        readingStoreBean.setReading(state2);
-        System.out.println(readingStoreBean.getName());
-        IoTDeviceReadingStoreBeanDTO dto = null;
-        dto = readingStoreBean.getDTO();
+        IoTDeviceReadingStoreBeanDTO dto =new IoTDeviceReadingStoreBeanDTO();
 
         ObjectMessage message = queueSession.createObjectMessage();
         message.setObject(dto);

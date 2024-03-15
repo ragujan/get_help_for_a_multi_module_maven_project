@@ -87,6 +87,32 @@ public class DeviceManagerUtil {
         }
         return empty;
     }
+    public void enterIoTDeviceReading(){
+        Connection connection = getConnection();
+
+        try {
+
+            Statement statement;
+            statement = connection.createStatement();
+            ResultSet resultSet;
+            resultSet = statement.executeQuery(
+                    "select * from user");
+            String name;
+            while (resultSet.next()) {
+                name = resultSet.getString("name");
+                System.out.println("Code : " + name
+                );
+            }
+
+            statement.executeUpdate("INSERT INTO iot_device VALUES (DEFAULT)");
+            resultSet.close();
+            statement.close();
+//            connection.close();
+            System.out.println("hey");
+        } catch (Exception exception) {
+            System.out.println(exception);
+        }
+    }
 
 
 }
