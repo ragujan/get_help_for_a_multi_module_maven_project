@@ -1,0 +1,114 @@
+{
+  "coordinates": [
+    {
+      "direction": "North",
+      "latitude": 40.643989456010615,
+      "longitude": -74.28995992272377
+    },
+    {
+      "direction": "North",
+      "latitude": 40.64461816876768,
+      "longitude": -74.29008697881916
+    },
+    {
+      "direction": "North",
+      "latitude": 40.64389771338824,
+      "longitude": -74.2898328666282
+    },
+    {
+      "direction": "North",
+      "latitude": 40.64530907216748,
+      "longitude": -74.29028780942163
+    },
+    {
+      "direction": "North",
+      "latitude": 40.646254971086286,
+      "longitude": -74.29129196243396
+    },
+    {
+      "direction": "North",
+      "latitude": 40.6467349124321,
+      "longitude": -74.29205429900654
+    },
+    {
+      "direction": "North",
+      "latitude": 40.647001833028234,
+      "longitude": -74.29243546729286
+    },
+    {
+      "direction": "East",
+      "latitude": 40.64337732330273,
+      "longitude": -74.28935743091631
+    },
+    {
+      "direction": "East",
+      "latitude": 40.643489798501086,
+      "longitude": -74.28909102297425
+    },
+    {
+      "direction": "East",
+      "latitude": 40.64375154884702,
+      "longitude": -74.28873444619028
+    },
+    {
+      "direction": "East",
+      "latitude": 40.644162572584285,
+      "longitude": -74.28832868640163
+    },
+    {
+      "direction": "South",
+      "latitude": 40.64300672369528,
+      "longitude": -74.28959105018856
+    },
+    {
+      "direction": "South",
+      "latitude": 40.64287662462775,
+      "longitude": -74.28952137426525
+    },
+    {
+      "direction": "South",
+      "latitude": 40.642373330718684,
+      "longitude": -74.28923037482085
+    },
+    {
+      "direction": "South",
+      "latitude": 40.6413351130998,
+      "longitude": -74.28858689717619
+    },
+    {
+      "direction": "South",
+      "latitude": 40.63992989120386,
+      "longitude": -74.2879844053688
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.64258636279006,
+      "longitude": -74.28959514877222
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.64190942604578,
+      "longitude": -74.28941481108835
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.64121330402854,
+      "longitude": -74.28973040203506
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.640941176835334,
+      "longitude": -74.28991483830266
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.64048762917448,
+      "longitude": -74.29012386607258
+    },
+    {
+      "direction": "South West",
+      "latitude": 40.63997861541623,
+      "longitude": -74.28999271139342
+    }
+  ]
+}

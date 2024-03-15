@@ -4,6 +4,9 @@
  */
 package com.ragiot.view;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hazelcast.shaded.com.fasterxml.jackson.jr.ob.impl.JSONReader;
 import com.ragiot.jms_client_queue.IdDeviceTest;
 import com.ragiot.jms_client_queue.IoTDeviceBeanTest;
 
@@ -13,8 +16,12 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author ACER
@@ -41,9 +48,18 @@ public class DeviceGenerator extends javax.swing.JFrame {
             model.addRow(e);
             Object[] ob = e;
             String idStr = (String) ob[0];
+//            System.out.println("id are "+idStr);
             jTable1.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
             jTable1.getColumnModel().getColumn(1).setCellEditor(new ButtonEditor(idStr));
         });
+        ObjectMapper objectMapper = new ObjectMapper();
+        InputStream inputStream = JSONReader.class.getResourceAsStream("/coordindates.json");
+        try {
+            Map<String, String> coordinates = objectMapper.readValue(inputStream, new TypeReference<Map<String, String>>() {});
+            coordinates.forEach((key, value) -> System.out.println(key + ": " + value));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
@@ -120,7 +136,7 @@ public class DeviceGenerator extends javax.swing.JFrame {
 
         for (int i = 0; i < totalDevices; i++) {
 //           list.add(new Object[]{deviceList.get(i),"open"});
-            list.add(new Object[]{Integer.toString(i),"open"});
+            list.add(new Object[]{Integer.toString(i),"open device "});
         }
         return list;
 
