@@ -5,6 +5,7 @@
 package com.ragiot.view;
 
 import com.ragiot.utils.IoTDataGenerator;
+import core.Coordinate;
 import core.IoTDeviceReadingState;
 import core.IoTDeviceReadingStoreBeanDTO;
 import ejb.remote.IoTDeviceReadingStore;
@@ -122,8 +123,10 @@ public class IoTDevice extends javax.swing.JFrame {
             IoTDeviceReadingState state = new IoTDeviceReadingState();
             String lightStatus = IoTDataGenerator.randomStatus();
             int speed = IoTDataGenerator.randomSpeed();
+            Coordinate coordinate = IoTDataGenerator.generateRandomCoordinate();
             state.captureTrafficLightStatus(lightStatus);
             state.captureVehicleSpeed(speed);
+            state.captureGPSCoordinates(coordinate);
 
 
             IoTDeviceReadingStoreBeanDTO dto = new IoTDeviceReadingStoreBeanDTO();

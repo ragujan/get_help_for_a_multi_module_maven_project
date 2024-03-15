@@ -52,14 +52,7 @@ public class DeviceGenerator extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setCellRenderer(new ButtonRenderer());
             jTable1.getColumnModel().getColumn(1).setCellEditor(new ButtonEditor(idStr));
         });
-        ObjectMapper objectMapper = new ObjectMapper();
-        InputStream inputStream = JSONReader.class.getResourceAsStream("/coordindates.json");
-        try {
-            Map<String, String> coordinates = objectMapper.readValue(inputStream, new TypeReference<Map<String, String>>() {});
-            coordinates.forEach((key, value) -> System.out.println(key + ": " + value));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
 
 
     }

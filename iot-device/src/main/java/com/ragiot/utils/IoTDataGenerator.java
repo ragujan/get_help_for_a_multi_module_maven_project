@@ -1,6 +1,12 @@
 package com.ragiot.utils;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ragiot.view.TestJson;
+import core.Coordinate;
+
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -20,6 +26,39 @@ public class IoTDataGenerator {
 
 
     }
+    public static Coordinate generateRandomCoordinate() {
+
+        try {
+            InputStream inputStream = TestJson.class.getResourceAsStream("/coordinates.json");
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(inputStream);
+            JsonNode coordinatesNode = jsonNode.get("coordinates");
+            List<Coordinate> coordinateList = new LinkedList<>();
+            for (JsonNode coordinateNode : coordinatesNode) {
+                String direction = coordinateNode.get("direction").asText();
+                double latitude = coordinateNode.get("latitude").asDouble();
+                double longitude = coordinateNode.get("longitude").asDouble();
+
+                Coordinate coordinate = new Coordinate();
+                coordinate.setDirection(direction);
+                coordinate.setLatitude(latitude);
+                coordinate.setLongitude(longitude);
+                coordinateList.add(coordinate);
+            }
+
+
+            int randomIndex = new Random().nextInt(coordinateList.size());
+            Coordinate randomCoordinate = coordinateList.get(randomIndex);
+
+            return randomCoordinate;
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+
+    }
+
 
     public static String randomNumberToString(){
         Random random = new Random();

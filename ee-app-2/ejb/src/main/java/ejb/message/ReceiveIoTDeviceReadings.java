@@ -26,8 +26,7 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
             InitialContext context = new InitialContext();
             IoTDeviceReadingStoreBeanDTO dto = message.getBody(IoTDeviceReadingStoreBeanDTO.class);
             System.out.println(dto.getId());
-            System.out.println(dto.getReadings().getCapturedTrafficLightStatus());
-            System.out.println(dto.getReadings().getCapturedVehicleSpeed());
+            System.out.println(dto.getReadings().getCapturedGPSCoordinates().getLatitude());
 
 
         } catch (JMSException e) {
