@@ -64,10 +64,8 @@ public class DeviceManagerUtil {
         }
         try {
 
-            Statement statement;
-            statement = connection.createStatement();
-            ResultSet resultSet;
-            resultSet = statement.executeQuery(
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(
                     "select * from iot_device");
             String id;
             List<String> iotIds = new LinkedList<>();

@@ -1,5 +1,7 @@
 core\IoTDeviceReadingStoreBeanDTO.class
-core\DeviceManagerUtil.class
+core\Test.class
 core\Account.class
-core\Coordinate.class
 core\IoTDeviceReadingState.class
+core\DeviceManagerUtil.class
+core\Coordinate.class
+core\IoTDataHolder.class

@@ -1,3 +1,4 @@
+com\module\web\servlet\Analytics.class
 com\module\web\servlet\MessageServletReceiver$1.class
 com\module\web\servlet\MessageServlet.class
 com\module\web\servlet\CartServlet.class

@@ -44,7 +44,7 @@ public class DbConnectionBean {
 
             Statement statement;
             statement = connection.createStatement();
-            String insertQuery = "INSERT INTO `iot_device_readings` ( `device_id`, `registered_at`, `speed`, `traffic_light_signal`, `longititute`, `latitute`, `direction`)\n" +
+            String insertQuery = "INSERT INTO `iot_device_readings` ( `device_id`, `registered_at`, `speed`, `traffic_light_signal`, `longitude`, `latitude`, `direction`)\n" +
                     "VALUES ( '" + deviceId + "', '" + registeredAt + "', '" + speed + "', '" + trafficLightStatus + "', '" + longitute + "', '" + latitute + "', '" + direction + "');";
             statement.executeUpdate(insertQuery);
             statement.close();
