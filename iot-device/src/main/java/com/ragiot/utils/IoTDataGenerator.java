@@ -2,7 +2,6 @@ package com.ragiot.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ragiot.view.TestJson;
 import core.Coordinate;
 
 import java.io.IOException;
@@ -29,7 +28,7 @@ public class IoTDataGenerator {
     public static Coordinate generateRandomCoordinate() {
 
         try {
-            InputStream inputStream = TestJson.class.getResourceAsStream("/coordinates.json");
+            InputStream inputStream = IoTDataGenerator.class.getResourceAsStream("/coordinates.json");
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonNode = objectMapper.readTree(inputStream);
             JsonNode coordinatesNode = jsonNode.get("coordinates");
