@@ -30,23 +30,24 @@
     <div style="display: flex; gap: 20px;justify-content: center;align-items: center">
         <h2>Last Hour</h2>
         <c:forEach var="flow" items="${trafficFlowFromLastHour}">
-            <p class="big-bold-text">${flow}</p>
+            <p id="trafficFlowLastHour" class="big-bold-text">${flow}</p>
         </c:forEach>
 
         <h2>Last 5 Hours</h2>
         <c:forEach var="flow" items="${trafficFlowFromLast5Hours}">
-            <p class="big-bold-text">${flow}</p>
+            <p id="trafficFlowLast5Hours" class="big-bold-text">${flow}</p>
         </c:forEach>
 
         <h2>Last 12 Hours</h2>
         <c:forEach var="flow" items="${trafficFlowFromLast12Hours}">
-            <p class="big-bold-text">${flow}</p>
+            <p id="trafficFlowLast12Hours" class="big-bold-text">${flow}</p>
         </c:forEach>
 
         <h2>Last 24 Hours</h2>
         <c:forEach var="flow" items="${trafficFlowFromLast24Hours}">
-            <p class="big-bold-text">${flow}</p>
+            <p id="trafficFlowLast24Hours" class="big-bold-text">${flow}</p>
         </c:forEach>
+
     </div>
 </section>
 
@@ -161,7 +162,7 @@ String trafficFlowJson = mapper.writeValueAsString(request.getAttribute("traffic
 </script>
 
 
-<script>
+<script src="test.js">
 
 </script>
 </html>

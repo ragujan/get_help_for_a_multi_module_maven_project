@@ -2,9 +2,20 @@ window.onload = init;
 var socket = new WebSocket("ws://localhost:8080/ragbagtest/analytics-live");
 socket.onmessage = onMessage;
 console.log(socket.onmessage)
+
 function onMessage(event) {
     var device = JSON.parse(event.data);
     console.log(device)
+    if (document.getElementById("trafficFlowLastHour")) {
+        const elTrafficFlowLastHour = document.getElementById("trafficFlowLastHour");
+        const elTrafficFlowLast5Hour = document.getElementById("trafficFlowLast5Hours");
+        const elTrafficFlowLast12Hour = document.getElementById("trafficFlowLast12Hours");
+        const elTrafficFlowLast24Hour = document.getElementById("trafficFlowLast24Hours");
+        elTrafficFlowLastHour.innerHTML = device.trafficFlowFromLastHour;
+        elTrafficFlowLast5Hour.innerHTML = device.trafficFlowFromLast5Hours;
+        elTrafficFlowLast12Hour.innerHTML = device.trafficFlowFromLast12Hours;
+        elTrafficFlowLast24Hour.innerHTML = device.trafficFlowFromLast24Hours;
+    }
     if (device.action === "add") {
         // printDeviceElement(device);
     }
@@ -74,7 +85,6 @@ function printDeviceElement(device) {
     removeDevice.innerHTML = "<a href=\"#\" OnClick=removeDevice(" + device.id + ")>Remove device</a>";
     deviceDiv.appendChild(removeDevice);
 }
-
 
 
 function formSubmit() {

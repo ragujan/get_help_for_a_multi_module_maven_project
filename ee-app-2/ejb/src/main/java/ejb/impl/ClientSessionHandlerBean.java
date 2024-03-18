@@ -41,6 +41,15 @@ public class ClientSessionHandlerBean {
             sendToSession(session, jsonObject);
         }
     }
+    public void sendObjects(JsonObject jsonObject) {
+        if(sessions == null || sessions.size()==0){
+            return;
+        }
+        for (Session session : sessions) {
+            JsonProvider provider = JsonProvider.provider();
+            sendToSession(session, jsonObject);
+        }
+    }
     public List<Device> getDevices() {
         return new ArrayList<>(devices);
     }
