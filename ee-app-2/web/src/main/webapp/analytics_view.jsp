@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<div>
+<div id="canvasContainer">
     <canvas id="myChart"></canvas>
 </div>
 <section>
@@ -55,14 +55,18 @@
 
     <h1>Average vehicle speed</h1>
     <div>
-        <c:out value="${averageVehicleSpeed}"/>
+        <p id="averageVehicleSpeed">
+            <c:out value="${averageVehicleSpeed}"/>
+        </p>
     </div>
 </section>
 <section style="padding: 20px">
 
     <h1>Average Travel Speed </h1>
     <div>
-        <c:out value="${averageTravelSpeed}"/>
+        <p id="averageTravelSpeed">
+            <c:out value="${averageTravelSpeed}"/>
+        </p>
     </div>
 </section>
 
@@ -133,7 +137,7 @@ String trafficFlowJson = mapper.writeValueAsString(request.getAttribute("traffic
 
     const ctx = document.getElementById('myChart');
 
-    new Chart(ctx, {
+    let myChart = new Chart(ctx, {
         type: 'bubble',
         backgroundColor: "#FFB1C1",
         data: {
@@ -162,7 +166,7 @@ String trafficFlowJson = mapper.writeValueAsString(request.getAttribute("traffic
 </script>
 
 
-<script src="test.js">
+<script src="analysis.js">
 
 </script>
 </html>

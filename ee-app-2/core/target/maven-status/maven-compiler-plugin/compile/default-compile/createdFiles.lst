@@ -1,7 +1,9 @@
+core\TrafficFlowDataCarrier.class
 core\IoTDeviceReadingStoreBeanDTO.class
 core\Test.class
 core\Account.class
 core\IoTDeviceReadingState.class
+core\model\Device.class
 core\DeviceManagerUtil.class
 core\Coordinate.class
 core\IoTDataHolder.class

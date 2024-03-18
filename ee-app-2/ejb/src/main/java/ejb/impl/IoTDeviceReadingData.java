@@ -75,7 +75,7 @@ public class IoTDeviceReadingData {
                 vehicleCountNorth++;
             }
             double northAvgVehicleDensity = (vehicleCountNorth / northDistance);
-            System.out.println("avg vehicle north density " + northAvgVehicleDensity);
+//            System.out.println("avg vehicle north density " + northAvgVehicleDensity);
 
             ResultSet eastVehicles = statement.executeQuery(
                     "select * from `iot_device_readings` where `direction`='East'");
@@ -86,7 +86,7 @@ public class IoTDeviceReadingData {
                 vehicleCountEast++;
             }
             double eastAvgVehicleDensity = (vehicleCountEast / eastDistance);
-            System.out.println("avg vehicle east density " + eastAvgVehicleDensity);
+//            System.out.println("avg vehicle east density " + eastAvgVehicleDensity);
 
             ResultSet southVehicles = statement.executeQuery(
                     "select * from `iot_device_readings` where `direction`='South'");
@@ -97,7 +97,7 @@ public class IoTDeviceReadingData {
                 vehicleCountSouth++;
             }
             double southAvgVehicleDensity = (vehicleCountSouth / southDistance);
-            System.out.println("avg vehicle south density " + southAvgVehicleDensity);
+//            System.out.println("avg vehicle south density " + southAvgVehicleDensity);
 
             ResultSet southWestVehicles = statement.executeQuery(
                     "select * from `iot_device_readings` where `direction`='South West'");
@@ -108,9 +108,9 @@ public class IoTDeviceReadingData {
                 vehicleCountSouthWest++;
             }
             double southWestAvgVehicleDensity = (vehicleCountSouthWest / southWestDistance);
-            System.out.println("avg vehicle south west density " + southWestAvgVehicleDensity);
+//            System.out.println("avg vehicle south west density " + southWestAvgVehicleDensity);
 
-            return northAvgVehicleDensity + eastAvgVehicleDensity + southAvgVehicleDensity + southWestAvgVehicleDensity;
+            return ((northAvgVehicleDensity + eastAvgVehicleDensity + southAvgVehicleDensity + southWestAvgVehicleDensity)/4);
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -180,7 +180,7 @@ public class IoTDeviceReadingData {
             int totalVehicle = 0;
             while (resultSet.next()) {
                 String speed = resultSet.getString("speed");
-                System.out.println(speed);
+//                System.out.println(speed);
                 totalVehicle++;
             }
             float flTotalVehicleCount = totalVehicle;

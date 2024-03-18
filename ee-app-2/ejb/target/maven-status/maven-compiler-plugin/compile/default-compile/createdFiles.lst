@@ -11,6 +11,7 @@ ejb\impl\Test.class
 ejb\message\MessageReceiver.class
 ejb\remote\IoTDeviceReadingStore.class
 ejb\impl\IoTDeviceReadingStoreBean.class
+ejb\impl\ClientSessionHandlerBean.class
 ejb\remote\Tax.class
 ejb\impl\DbConnectionBean.class
 ejb\remote\IoTDeviceCount.class
