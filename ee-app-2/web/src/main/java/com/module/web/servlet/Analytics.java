@@ -22,11 +22,6 @@ public class Analytics extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        response.getWriter().write("hey bro");
-        LinkedList<String> linkedList = new LinkedList<>();
-        linkedList.add("Item 1");
-        linkedList.add("Item 2");
-        linkedList.add("Item 3");
 
 
         LinkedList<TrafficFlowDataCarrier> trafficFlowAnalysisList = new LinkedList<>();
@@ -41,9 +36,7 @@ public class Analytics extends HttpServlet {
             System.out.println(carrier.getValue());
         }
 
-
         // Set the linked list as an attribute in the request object
-        request.setAttribute("linkedList", linkedList);
         request.setAttribute("dataList", data.getAllReadings());
         request.setAttribute("averageVehicleSpeed", data.getAverageVehicleSpeed());
         request.setAttribute("averageTravelSpeed", data.getAverageTravelSpeed());
@@ -52,13 +45,7 @@ public class Analytics extends HttpServlet {
         request.setAttribute("trafficFlowFromLast5Hours", data.getCalcuatedTrafficFlowByTime(5));
         request.setAttribute("trafficFlowFromLast12Hours", data.getCalcuatedTrafficFlowByTime(12));
         request.setAttribute("trafficFlowFromLast24Hours", data.getCalcuatedTrafficFlowByTime(24));
-
-
-        //traffic flow analysis in json
         ObjectMapper mapper = new ObjectMapper();
-//        String trafficFlowAnalysisJsonList = mapper.writeValueAsString(trafficFlowAnalysisList);
-//        System.out.println("traffli list json string");
-//        System.out.println(trafficFlowAnalysisJsonList);
         request.setAttribute("trafficFlowAnalysisList",trafficFlowAnalysisList);
         request.setAttribute("name", "ragbag");
         try {

@@ -1,6 +1,7 @@
 package ejb.message;
 
 import core.IoTDeviceReadingStoreBeanDTO;
+import ejb.impl.ClientSessionHandlerBean;
 import ejb.impl.DbConnectionBean;
 import jakarta.ejb.ActivationConfigProperty;
 import jakarta.ejb.EJB;
@@ -18,6 +19,8 @@ import javax.naming.NamingException;
 public class ReceiveIoTDeviceReadings implements MessageListener {
     @EJB
     DbConnectionBean dbConnectionBean;
+    @EJB
+    ClientSessionHandlerBean clientSessionHandlerBean;
     @Override
     public void onMessage(Message message) {
         System.out.println("object is printed out");
@@ -27,6 +30,8 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
             IoTDeviceReadingStoreBeanDTO dto = message.getBody(IoTDeviceReadingStoreBeanDTO.class);
 
             dbConnectionBean.addNewDevice(dto);
+            clientSessionHandlerBean.sendTextMessage("added a new dto bro");
+
         } catch (JMSException e) {
             e.printStackTrace();
         } catch (NamingException e) {
