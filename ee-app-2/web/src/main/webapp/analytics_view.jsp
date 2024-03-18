@@ -1,4 +1,5 @@
-<%@ page import="java.util.LinkedList" %><%--
+<%@ page import="java.util.LinkedList" %>
+<%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 3/16/2024
@@ -11,8 +12,60 @@
 <html>
 <head>
     <title>Title</title>
+    <style>
+        .big-bold-text {
+            font-size: 32px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<section>
+    <h1>Traffic Flow Data</h1>
+
+    <div style="display: flex; gap: 20px;justify-content: center;align-items: center">
+        <h2>Last Hour</h2>
+        <c:forEach var="flow" items="${trafficFlowFromLastHour}">
+            <p class="big-bold-text">${flow}</p>
+        </c:forEach>
+
+        <h2>Last 5 Hours</h2>
+        <c:forEach var="flow" items="${trafficFlowFromLast5Hours}">
+            <p class="big-bold-text">${flow}</p>
+        </c:forEach>
+
+        <h2>Last 12 Hours</h2>
+        <c:forEach var="flow" items="${trafficFlowFromLast12Hours}">
+            <p class="big-bold-text">${flow}</p>
+        </c:forEach>
+
+        <h2>Last 24 Hours</h2>
+        <c:forEach var="flow" items="${trafficFlowFromLast24Hours}">
+            <p class="big-bold-text">${flow}</p>
+        </c:forEach>
+    </div>
+</section>
+
+<section style="padding: 20px">
+
+    <h1>Average vehicle speed</h1>
+    <div>
+        <c:out value="${averageVehicleSpeed}"/>
+    </div>
+</section>
+<section style="padding: 20px">
+
+    <h1>Average Travel Speed </h1>
+    <div>
+        <c:out value="${averageTravelSpeed}"/>
+    </div>
+</section>
+
+
 <h1>IoT Data:</h1>
 <table border="1">
     <thead>
@@ -43,5 +96,72 @@
     </c:forEach>
     </tbody>
 </table>
+<%--data flow analysis--%>
+
+
 </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+
+    <%
+ObjectMapper mapper = new ObjectMapper();
+String trafficFlowJson = mapper.writeValueAsString(request.getAttribute("trafficFlowAnalysisList"));
+%>
+    const dataStr = '<%=trafficFlowJson%>'
+    console.log(JSON.parse(dataStr))
+    const data = JSON.parse(dataStr);
+    const timeStamps = data.map(obj => obj.timeInterval);
+    const values = data.map(obj => obj.value);
+
+    const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+            const {ctx} = chart;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-over';
+            ctx.fillStyle = options.color || '#99ffff';
+            ctx.fillRect(0, 0, chart.width, chart.height);
+            ctx.restore();
+        }
+    };
+
+
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bubble',
+        backgroundColor: "#FFB1C1",
+        data: {
+            labels: timeStamps,
+            datasets: [{
+                label: '# Traffic Flow Analysis',
+                data: values,
+                borderWidth: 5,
+                backgroundColor: "#FF0000"
+            }],
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                customCanvasBackgroundColor: {
+                    color: 'lightGreen',
+                }
+            }
+        },
+        plugins: [plugin],
+    });
+</script>
+
+
+<script>
+
+</script>
 </html>

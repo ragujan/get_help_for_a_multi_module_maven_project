@@ -1,6 +1,11 @@
 {
   "coordinates": [
     {
+      "direction": "Main Junction",
+      "latitude": 40.64340873184112,
+      "longitude": -74.2897953772503
+    },
+    {
       "direction": "North",
       "latitude": 40.643989456010615,
       "longitude": -74.28995992272377

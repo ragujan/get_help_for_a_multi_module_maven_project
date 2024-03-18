@@ -1,5 +1,7 @@
 package com.module.web.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import core.TrafficFlowDataCarrier;
 import ejb.impl.IoTDeviceReadingData;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
@@ -26,11 +28,38 @@ public class Analytics extends HttpServlet {
         linkedList.add("Item 2");
         linkedList.add("Item 3");
 
+
+        LinkedList<TrafficFlowDataCarrier> trafficFlowAnalysisList = new LinkedList<>();
+
+        for (int i = 1; i < 25; i++) {
+            if (i % 2 == 0)
+                trafficFlowAnalysisList.add(new TrafficFlowDataCarrier(i, data.getCalcuatedTrafficFlowByTime(i)));
+        }
+        for (TrafficFlowDataCarrier carrier : trafficFlowAnalysisList
+        ) {
+            System.out.println(carrier.getTimeInterval());
+            System.out.println(carrier.getValue());
+        }
+
+
         // Set the linked list as an attribute in the request object
         request.setAttribute("linkedList", linkedList);
+        request.setAttribute("dataList", data.getAllReadings());
+        request.setAttribute("averageVehicleSpeed", data.getAverageVehicleSpeed());
+        request.setAttribute("averageTravelSpeed", data.getAverageTravelSpeed());
+        request.setAttribute("dataFlowAnalysis", data.getTrafficFlowAnalysis());
+        request.setAttribute("trafficFlowFromLastHour", data.getCalcuatedTrafficFlowByTime(1));
+        request.setAttribute("trafficFlowFromLast5Hours", data.getCalcuatedTrafficFlowByTime(5));
+        request.setAttribute("trafficFlowFromLast12Hours", data.getCalcuatedTrafficFlowByTime(12));
+        request.setAttribute("trafficFlowFromLast24Hours", data.getCalcuatedTrafficFlowByTime(24));
 
-        request.setAttribute("dataList",data.getAllReadings());
 
+        //traffic flow analysis in json
+        ObjectMapper mapper = new ObjectMapper();
+//        String trafficFlowAnalysisJsonList = mapper.writeValueAsString(trafficFlowAnalysisList);
+//        System.out.println("traffli list json string");
+//        System.out.println(trafficFlowAnalysisJsonList);
+        request.setAttribute("trafficFlowAnalysisList",trafficFlowAnalysisList);
         request.setAttribute("name", "ragbag");
         try {
             request.getRequestDispatcher("analytics_view.jsp").forward(request, response);
@@ -38,4 +67,5 @@ public class Analytics extends HttpServlet {
             throw new RuntimeException(e);
         }
     }
+
 }
