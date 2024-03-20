@@ -1,11 +1,10 @@
 package ejb.remote;
 
-import core.IoTDeviceReadingState;
-import core.IoTDeviceReadingStoreBeanDTO;
+import core.model.IoTDeviceReadingState;
+import core.dto.IoTDeviceReadingStoreBeanDTO;
 import jakarta.ejb.Remote;
 
 import java.io.Serializable;
-import java.util.List;
 
 @Remote
 public interface IoTDeviceReadingStore extends Serializable {

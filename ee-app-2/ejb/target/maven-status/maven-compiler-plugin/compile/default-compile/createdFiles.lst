@@ -2,11 +2,8 @@ ejb\impl\IoTDeviceReadingData.class
 ejb\impl\IoTDeviceManagerBean.class
 ejb\message\ReceiveIoTDeviceReadings.class
 ejb\impl\ClientSessionHandler.class
-ejb\message\MessageReceiver.class
 ejb\remote\IoTDeviceReadingStore.class
-ejb\message\IoTDeviceIdMessageCommunicator.class
 ejb\impl\IoTDeviceReadingStoreBean.class
-ejb\message\IoTDeviceIdMessageCommunicator2.class
 ejb\impl\DbConnectionBean.class
 ejb\remote\IoTDeviceCount.class
 ejb\remote\IoTDeviceManager.class

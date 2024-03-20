@@ -1,7 +1,7 @@
 package com.module.web.servlet;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import core.TrafficFlowDataCarrier;
+import core.model.TrafficFlowDataCarrier;
 import ejb.impl.IoTDeviceReadingData;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;

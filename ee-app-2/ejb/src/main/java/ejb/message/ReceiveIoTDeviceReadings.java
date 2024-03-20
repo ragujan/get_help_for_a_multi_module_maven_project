@@ -2,9 +2,9 @@ package ejb.message;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import core.IoTDataHolder;
-import core.IoTDeviceReadingStoreBeanDTO;
-import core.TrafficFlowDataCarrier;
+import core.model.IoTDataHolder;
+import core.dto.IoTDeviceReadingStoreBeanDTO;
+import core.model.TrafficFlowDataCarrier;
 import ejb.impl.ClientSessionHandler;
 import ejb.impl.DbConnectionBean;
 import ejb.impl.IoTDeviceReadingData;

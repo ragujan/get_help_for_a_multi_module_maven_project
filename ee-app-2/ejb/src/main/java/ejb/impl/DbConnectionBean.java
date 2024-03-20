@@ -1,6 +1,6 @@
 package ejb.impl;
 
-import core.IoTDeviceReadingStoreBeanDTO;
+import core.dto.IoTDeviceReadingStoreBeanDTO;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.Local;

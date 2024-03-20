@@ -1,7 +1,7 @@
 package ejb.impl;
 
 
-import core.IoTDataHolder;
+import core.model.IoTDataHolder;
 import jakarta.ejb.*;
 
 import java.sql.Connection;
@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;

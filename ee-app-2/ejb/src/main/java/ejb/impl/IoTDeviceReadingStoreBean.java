@@ -1,14 +1,12 @@
 package ejb.impl;
 
-import core.IoTDeviceReadingState;
-import core.IoTDeviceReadingStoreBeanDTO;
+import core.model.IoTDeviceReadingState;
+import core.dto.IoTDeviceReadingStoreBeanDTO;
 import ejb.remote.IoTDeviceReadingStore;
 import jakarta.annotation.PostConstruct;
 import jakarta.ejb.Stateful;
 
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 
 @Stateful
 public class IoTDeviceReadingStoreBean implements IoTDeviceReadingStore , Serializable {

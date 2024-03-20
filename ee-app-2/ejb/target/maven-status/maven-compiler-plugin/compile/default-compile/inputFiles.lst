@@ -1,5 +1,3 @@
-F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\message\IoTDeviceIdMessageCommunicator.java
-F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\message\IoTDeviceIdMessageCommunicator2.java
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\impl\IoTDeviceReadingData.java
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\impl\DbConnectionBean.java
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\remote\IoTDeviceReadingStore.java
@@ -9,4 +7,3 @@ F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\impl\ClientSessionHandler.java
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\remote\IoTDeviceCount.java
 F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\message\ReceiveIoTDeviceReadings.java
-F:\web_multi_projects\multi_moduel_app_help_github - backup - 2\ee-app-2\ejb\src\main\java\ejb\message\MessageReceiver.java
