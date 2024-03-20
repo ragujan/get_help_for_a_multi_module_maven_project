@@ -1,6 +1,6 @@
 package com.module.web.websocket;
 
-import ejb.impl.ClientSessionHandlerBean;
+import ejb.impl.ClientSessionHandler;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.Json;
@@ -17,13 +17,13 @@ public class WebSocketTest {
 
 //    @Inject
     @EJB
-    private ClientSessionHandlerBean sessionHandler;
+    private ClientSessionHandler sessionHandler;
 
     @OnOpen
     public void open(Session session) {
         System.out.println("hey bro ");
         sessionHandler.addSession(session);
-        System.out.println("device count "+sessionHandler.getDevices().size());;
+//        System.out.println("device count "+sessionHandler.getDevices().size());;
     }
 
     @OnClose

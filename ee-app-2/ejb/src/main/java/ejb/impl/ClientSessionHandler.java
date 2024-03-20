@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 @Startup
 @Local
 @Singleton
-public class ClientSessionHandlerBean {
+public class ClientSessionHandler {
     private int deviceId = 0;
     private final Set<Session> sessions = new HashSet<>();
     private final Set<Device> devices = new HashSet<>();
@@ -59,7 +59,7 @@ public class ClientSessionHandlerBean {
             session.getBasicRemote().sendText(message.toString());
         } catch (IOException ex) {
             sessions.remove(session);
-            Logger.getLogger(ClientSessionHandlerBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ClientSessionHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

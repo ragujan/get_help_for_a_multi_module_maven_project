@@ -14,10 +14,10 @@ public class TestFilter implements Filter {
      * @see Filter#init(FilterConfig)
      */
     public void init(FilterConfig fConfig) throws ServletException {
-        String guruparam = fConfig.getInitParameter("test-param");
+        String testString = fConfig.getInitParameter("test-param");
 
         //Print the init parameter
-        System.out.println("Test Param: " + guruparam);
+        System.out.println("Test Param: " + testString);
     }
 
     @Override

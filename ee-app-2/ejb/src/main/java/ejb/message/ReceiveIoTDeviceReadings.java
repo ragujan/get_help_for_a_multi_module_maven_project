@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import core.IoTDataHolder;
 import core.IoTDeviceReadingStoreBeanDTO;
 import core.TrafficFlowDataCarrier;
-import ejb.impl.ClientSessionHandlerBean;
+import ejb.impl.ClientSessionHandler;
 import ejb.impl.DbConnectionBean;
 import ejb.impl.IoTDeviceReadingData;
 import jakarta.ejb.ActivationConfigProperty;
@@ -15,7 +15,6 @@ import jakarta.jms.*;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonObjectBuilder;
-import jakarta.json.JsonValue;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -31,7 +30,7 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
     @EJB
     DbConnectionBean dbConnectionBean;
     @EJB
-    ClientSessionHandlerBean clientSessionHandlerBean;
+    ClientSessionHandler clientSessionHandler;
 
     @EJB
     IoTDeviceReadingData data;
@@ -91,7 +90,7 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
 
 // Build the JSON object
             JsonObject jsonObject = builder.build();
-            clientSessionHandlerBean.sendObjects(jsonObject);
+            clientSessionHandler.sendObjects(jsonObject);
 
 
         } catch (JMSException e) {
