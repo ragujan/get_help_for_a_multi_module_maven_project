@@ -1,4 +1,3 @@
-core\model\Device.class
 core\model\TrafficFlowDataCarrier.class
 core\dto\IoTDeviceReadingStoreBeanDTO.class
 core\model\IoTDeviceReadingState.class

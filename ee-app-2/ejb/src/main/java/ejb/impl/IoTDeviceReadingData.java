@@ -16,7 +16,6 @@ import java.util.List;
 
 @Local
 @Stateless
-//@DependsOn("DbConnectionBean")
 public class IoTDeviceReadingData {
     @EJB
     DbConnectionBean dbConnectionBean;

@@ -1,4 +1,4 @@
 com\module\web\filters\TestFilter.class
 com\module\web\websocket\WebSocketTest.class
 com\module\web\servlet\Analytics.class
-com\module\web\websocket\DeviceSessionHandler.class
+com\module\web\FakeTest.class

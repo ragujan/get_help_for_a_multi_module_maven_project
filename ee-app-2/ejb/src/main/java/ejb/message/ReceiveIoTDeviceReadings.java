@@ -37,14 +37,13 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        System.out.println("object is printed out");
+
         try {
 
             InitialContext context = new InitialContext();
             IoTDeviceReadingStoreBeanDTO dto = message.getBody(IoTDeviceReadingStoreBeanDTO.class);
 
             dbConnectionBean.addNewDevice(dto);
-//            clientSessionHandlerBean.sendTextMessage("added a new dto bro");
 
             List<IoTDataHolder> dataList = data.getAllReadings();
             double averageVehicleSpeed = data.getAverageVehicleSpeed();
@@ -71,12 +70,8 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
-
-
-
             JsonObjectBuilder builder = Json.createObjectBuilder();
 //            clientSessionHandlerBean.sendTextMessage("added a new dto bro");
-
 // Add variables to the JSON object
             builder.add("dataList", dataListJson);
             builder.add("averageVehicleSpeed", averageVehicleSpeed);
@@ -90,7 +85,11 @@ public class ReceiveIoTDeviceReadings implements MessageListener {
 
 // Build the JSON object
             JsonObject jsonObject = builder.build();
-            clientSessionHandler.sendObjects(jsonObject);
+            if (clientSessionHandler.getAllSessions().size() == 0) {
+                return;
+            } else {
+                clientSessionHandler.sendObjects(jsonObject);
+            }
 
 
         } catch (JMSException e) {

@@ -1,6 +1,5 @@
 package ejb.impl;
 
-import core.model.Device;
 import jakarta.ejb.Local;
 import jakarta.ejb.Singleton;
 import jakarta.ejb.Startup;
@@ -9,9 +8,7 @@ import jakarta.json.spi.JsonProvider;
 import jakarta.websocket.Session;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,17 +19,17 @@ import java.util.logging.Logger;
 public class ClientSessionHandler {
     private int deviceId = 0;
     private final Set<Session> sessions = new HashSet<>();
-    private final Set<Device> devices = new HashSet<>();
 
     public void addSession(Session session) {
         sessions.add(session);
-//        for (Device device:devices){
-//            JsonObject addMessage = createAddMessage(device);
-//        }
+
+    }
+    public  Set<Session> getAllSessions(){
+        return sessions;
     }
 
     public void sendTextMessage(String message) {
-        if(sessions == null || sessions.size()==0){
+        if (sessions == null || sessions.size() == 0) {
             return;
         }
         for (Session session : sessions) {
@@ -41,17 +38,15 @@ public class ClientSessionHandler {
             sendToSession(session, jsonObject);
         }
     }
+
     public void sendObjects(JsonObject jsonObject) {
-        if(sessions == null || sessions.size()==0){
+        if (sessions == null || sessions.size() == 0) {
             return;
         }
         for (Session session : sessions) {
             JsonProvider provider = JsonProvider.provider();
             sendToSession(session, jsonObject);
         }
-    }
-    public List<Device> getDevices() {
-        return new ArrayList<>(devices);
     }
 
     private void sendToSession(Session session, JsonObject message) {
@@ -63,13 +58,5 @@ public class ClientSessionHandler {
         }
     }
 
-    public Device getDeviceById(int id) {
-        for (Device device : devices) {
-            if (device.getId() == id) {
-                return device;
-            }
-        }
-        return null;
-    }
 
 }
