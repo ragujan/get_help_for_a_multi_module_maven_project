@@ -1,5 +1,0 @@
-core\model\TrafficFlowDataCarrier.class
-core\dto\IoTDeviceReadingStoreBeanDTO.class
-core\model\IoTDeviceReadingState.class
-core\model\Coordinate.class
-core\model\IoTDataHolder.class
