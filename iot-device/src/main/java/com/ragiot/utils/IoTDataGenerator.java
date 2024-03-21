@@ -2,7 +2,7 @@ package com.ragiot.utils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import core.Coordinate;
+import core.model.Coordinate;
 
 import java.io.IOException;
 import java.io.InputStream;

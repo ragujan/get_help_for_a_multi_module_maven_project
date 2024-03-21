@@ -5,9 +5,9 @@
 package com.ragiot.view;
 
 import com.ragiot.utils.IoTDataGenerator;
-import core.Coordinate;
-import core.IoTDeviceReadingState;
-import core.IoTDeviceReadingStoreBeanDTO;
+import core.model.Coordinate;
+import core.model.IoTDeviceReadingState;
+import core.dto.IoTDeviceReadingStoreBeanDTO;
 import ejb.remote.IoTDeviceReadingStore;
 import jakarta.jms.*;
 

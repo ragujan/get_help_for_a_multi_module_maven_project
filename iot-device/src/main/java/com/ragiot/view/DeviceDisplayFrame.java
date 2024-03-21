@@ -4,7 +4,8 @@
  */
 package com.ragiot.view;
 
-import com.ragiot.jms_client_queue.IdDeviceTest;
+import com.ragiot.utils.IdDeviceData;
+
 import java.awt.BorderLayout;
 import java.awt.ScrollPane;
 import java.util.List;
@@ -34,7 +35,7 @@ public class DeviceDisplayFrame extends javax.swing.JFrame {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		jPanel1.add(scrollPane, BorderLayout.CENTER);
 
-		deviceList = IdDeviceTest.totalDevices();
+		deviceList = IdDeviceData.totalDevices();
 		totalDevices = deviceList.size();
 
 		for (int i = 0; i < totalDevices; i++) {
