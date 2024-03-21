@@ -1,0 +1,7 @@
+ejb\impl\IoTDeviceReadingData.class
+ejb\impl\IoTDeviceManagerBean.class
+ejb\message\ReceiveIoTDeviceReadings.class
+ejb\impl\ClientSessionHandler.class
+ejb\remote\IoTDeviceReadingStore.class
+ejb\impl\DbConnectionBean.class
+ejb\remote\IoTDeviceManager.class
